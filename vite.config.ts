@@ -72,6 +72,9 @@ export default defineConfig({
             'composer.json',
             'resources/js/components/ui/*',
             'resources/views/mail/*',
+            'AGENTS.md',
+            'plan.md',
+            'plans/**',
         ],
         sortTailwindcss: {
             functions: ['clsx', 'cn', 'cva'],
