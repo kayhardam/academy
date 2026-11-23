@@ -1,6 +1,6 @@
 # Plan: leerplatform naast het Coachboard
 
-Stand: 21 november 2026. Dit is het overzicht op één pagina. Het plan per stap staat in `plans/`. Het whiteboard toont hetzelfde in één beeld: https://claude.ai/artifact/8WZkXj5rMeXdT4iVdTC2cV
+Stand: 23 november 2026. Dit is het overzicht op één pagina. Het plan per stap staat in `plans/`. Het whiteboard toont hetzelfde in één beeld: https://claude.ai/artifact/8WZkXj5rMeXdT4iVdTC2cV
 
 ## Doel
 
@@ -18,27 +18,28 @@ Op zondag 28 maart 2027 kan een jeugdtrainer zonder account een serie voor zijn 
 ## Besloten
 
 - **Adres:** academy.handballcoachboard.com.
-- **Hosting:** Laravel Cloud, in de EU (voorstel: Frankfurt).
+- **Hosting:** Laravel Cloud, in de EU (Frankfurt).
 - **Database:** PostgreSQL 18, als Serverless Postgres op Laravel Cloud. Lokaal en in CI draait dezelfde versie, nergens SQLite.
+- **Leeftijd:** 13 t/m 16 jaar. In het Coachboard zijn dat de groepen 13-14 en 15-16.
+- **Account:** voortgang als "Mijn trainingen". Een trainer zet oefeningen in een eigen training en vinkt ze af.
+- **Inlogfuncties:** registratie en e-mailverificatie. Registratie staat uit tot stap 5.
 
-## Open keuzes (beslissen vóór zo 29 november)
+## Open keuzes
 
-1. Leeftijd: 13 t/m 16 jaar?
-2. Account: voortgang als "Mijn trainingen"?
-3. Inlogfuncties bij de installatie: alleen registratie en e-mailverificatie? Zie "Jij beslist" in `plans/stap-3-fundament.md`.
+Geen. De drie keuzes van stap 1 zijn op 23 november 2026 beslist.
 
 ## Stappen
 
 | # | Stap | Datum | Klaar als |
 |---|------|-------|-----------|
-| 1 | Beslissen | t/m zo 29 nov | de open keuzes hierboven zijn ingevuld |
+| 1 | Beslissen | klaar op ma 23 nov | de open keuzes zijn ingevuld |
 | 2 | Inhoud plannen | t/m zo 20 dec | elke week van de schrijfkalender heeft een titel |
-| 3 | Fundament | t/m zo 20 dec | één stap van een bord staat als tekening in de server-HTML van de live site |
+| 3 | Fundament | klaar op ma 23 nov | één stap van een bord staat als tekening in de server-HTML van de live site |
 | 4 | Lezen zonder account | live zo 31 jan | drie series live, elk met minstens drie oefeningen |
 | 5 | Account en Mijn trainingen | live zo 28 mrt | een training maken, afvinken en het account verwijderen werkt |
 | 6 | Vullen en beslissen | t/m zo 4 juli | 38 tot 64 oefeningen live en een besluit over Later |
 
-Stap 2 en 3 lopen naast elkaar. Vanaf maandag 4 januari komen er elke week 1 à 2 oefeningen bij, 26 weken lang.
+Stap 1 en 3 zijn af. Stap 2 loopt tot zondag 20 december. Vanaf maandag 4 januari komen er elke week 1 à 2 oefeningen bij, 26 weken lang.
 
 ## Kwaliteitslat (elke stap)
 
@@ -60,7 +61,7 @@ Stap 2 en 3 lopen naast elkaar. Vanaf maandag 4 januari komen er elke week 1 à 
 | Post | Bedrag |
 |---|---|
 | Claude Pro, vijf afschrijvingen vanaf 24 november | €109 |
-| Laravel Cloud met database, januari t/m maart (de eerste maand is gratis) | €20 tot €45 |
+| Laravel Cloud met database, vanaf 9 december (de eerste periode is gratis) | €20 tot €45 |
 | Laracasts, hooguit één maand | €0 tot €25 |
 | Usage credits en Fable na 24 november | €0 (uit) |
 | Reserve | €21 tot €71 |
@@ -69,7 +70,7 @@ Is een limiet bereikt, dan wacht het werk op de reset. Er wordt niets bijgekocht
 
 ## Risico's
 
-- **Techniek:** de submodule of server-side rendering werkt op Laravel Cloud anders dan verwacht. Stap 3 bewijst dit met de eerste deploy.
+- **Techniek:** bewezen in stap 3. Laravel Cloud haalt de submodule op en rendert de pagina op de server; de live HTML is op 23 november 2026 gecontroleerd.
 - **NHV:** de Trainersapp van de bond komt alsnog. Daarom 13 t/m 16 jaar en het afspeelbare bord.
 - **Tijd:** Laravel leren, bouwen en schrijven tegelijk. Daarom gaat inhoud voor en schuift de datum, niet de lat.
 
