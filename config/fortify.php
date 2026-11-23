@@ -77,6 +77,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Redirects
+    |--------------------------------------------------------------------------
+    |
+    | After logging out, Fortify sends the user to "/" unless a path is set
+    | here. "/" only redirects to the home page, so we name that page. It
+    | is a literal path: route() is not available while config loads.
+    |
+    */
+
+    'redirects' => [
+        'logout' => '/nl',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Fortify Routes Prefix / Subdomain
     |--------------------------------------------------------------------------
     |
