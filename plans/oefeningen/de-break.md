@@ -65,10 +65,10 @@ related:
 **Verloop**
 
 1. A1 dribbelt vanaf de middenlijn recht op V1 af. A2 loopt breed mee, op gelijke hoogte.
-2. V1 stapt uit naar A1. A1 speelt naar A2.
-3. A2 vangt in de loop en schiet. Daarna start het volgende drietal.
+2. V1 stapt uit naar A1. A1 speelt naar A2, die in de loop vangt.
+3. A2 loopt door en schiet. Daarna start het volgende drietal.
 
-**Op het bord:** half veld: A1 en A2 op de middenlijn, V1 op de 9 meter, de keeper (K), één bal bij A1. Zoals Break 1 tegen 1: de stappen tonen de helft met het doel.
+**Op het bord:** half veld: A1 en A2 op de middenlijn, V1 op de 9 meter, de keeper (K), één bal bij A1. Zoals Break 1 tegen 1: de stappen tonen de helft met het doel. Getekend op 23 november 2026.
 
 ## Break 3 tegen 2
 

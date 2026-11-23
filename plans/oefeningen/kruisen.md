@@ -32,7 +32,7 @@ goal: "De verdediger naar je toe trekken en dan kiezen: de bal afgeven aan de kr
 organization:
   players: "Twee rijen van drie of meer, een verdediger en een keeper."
   equipment: "Twee pionnen en ballen bij de linkerrij."
-  space: "Een half veld: de verdediger staat op 8 meter, tussen twee pionnen die 4 meter uit elkaar staan."
+  space: "Een half veld: twee pionnen op 8 meter, 7 meter uit elkaar, en de verdediger ertussen, op 7 meter."
 rules:
   - "De verdediger blijft tussen de pionnen en probeert de bal te raken."
   - "Blijft de verdediger staan, dan gaat de eerste zelf door en schiet."
@@ -67,7 +67,7 @@ related:
 3. Die loopt door het gat dat de verdediger achterlaat en schiet op doel.
 4. Daarna sluiten ze allebei aan bij de andere rij.
 
-**Op het bord:** half veld, zoals Kruisen in tweetallen: twee rijen van drie zonder label, drie ballen bij de linkerrij, de keeper (K). Erbij: twee pionnen op 8 meter en een verdediger zonder label ertussen.
+**Op het bord:** half veld, zoals Kruisen in tweetallen: twee rijen van drie zonder label, drie ballen bij de linkerrij, de keeper (K). Erbij: twee pionnen op 8 meter en een verdediger zonder label ertussen, op 7 meter. Getekend op 23 november 2026.
 
 **Ook in deze pull request:** Kruisen in tweetallen krijgt `nl/crossing-against-a-defender` bij Zie ook.
 

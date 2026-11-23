@@ -67,7 +67,7 @@ related: []
 2. A1 loopt zijn bal achterna en sluit aan bij die pion.
 3. A2 speelt door naar A3 en loopt ook zijn bal achterna. Zo gaat de bal het vierkant rond.
 
-**Op het bord:** half veld: vier pionnen in een vierkant van 8 bij 8 meter, A1 met de bal en A5 achter hem bij de eerste pion, A2, A3 en A4 bij de andere drie.
+**Op het bord:** half veld: vier pionnen in een vierkant van 8 bij 8 meter, A1 met de bal en A5 achter hem bij de eerste pion, A2, A3 en A4 bij de andere drie. Getekend op 23 november 2026.
 
 ## Reactiesprint
 

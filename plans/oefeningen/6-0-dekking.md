@@ -32,7 +32,7 @@ goal: "Samen schuiven: één stapt uit naar de bal, zijn buren sluiten het gat a
 organization:
   players: "Zestallen: drie opbouwers (LO, MO en RO) en drie verdedigers."
   equipment: "Een bal per zestal."
-  space: "Een half veld: de verdedigers staan aan de 6 meter, de opbouwers op 10 meter."
+  space: "Een half veld: de verdedigers staan aan de 6 meter, de opbouwers op 11 meter."
 rules:
   - "De opbouwers spelen de bal rond en blijven op hun plek."
   - "Na tien passes mogen ze doorbreken. Lukt dat niet, dan krijgen de verdedigers een punt."
@@ -63,11 +63,11 @@ related:
 **Verloop**
 
 1. MO heeft de bal. Zijn verdediger stapt naar hem uit; de twee naast hem sluiten het gat.
-2. MO speelt naar LO. De verdediger van MO zakt terug naar de 6 meter.
-3. De verdediger van LO stapt uit. De andere twee schuiven mee naar de kant van de bal.
-4. LO speelt terug naar MO. De lijn schuift terug en de verdediger van MO stapt weer uit.
+2. MO speelt naar RO. De verdediger van MO zakt terug naar de 6 meter.
+3. De verdediger van RO stapt uit. De andere twee schuiven mee naar de kant van de bal.
+4. RO speelt terug naar MO. De lijn schuift terug en de verdediger van MO stapt weer uit.
 
-**Op het bord:** half veld: LO, MO en RO op 10 meter, drie verdedigers zonder label aan de 6 meter, één bal bij MO. Geen keeper.
+**Op het bord:** half veld: LO, MO en RO op 11 meter, drie verdedigers zonder label aan de 6 meter, één bal bij MO. Geen keeper. Getekend op 23 november 2026.
 
 **Ook in deze pull request:** Uitstappen en meeschuiven krijgt `nl/shifting-with-three-defenders` bij Zie ook.
 
