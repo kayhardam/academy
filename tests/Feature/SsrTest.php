@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Vite;
 use Inertia\Ssr\BundleDetector;
 use Inertia\Ssr\Gateway;
 use Inertia\Ssr\HasHealthCheck;
@@ -28,6 +29,9 @@ test('the server HTML of /nl has the title and the drawing of the first step', f
     // Set here and not in phpunit.xml: for every test it would fail each Inertia
     // page as soon as a bundle exists and the SSR server is not running.
     config(['inertia.ssr.throw_on_error' => true]);
+
+    // Always the built bundle: while the dev server runs, Inertia would render through Vite instead.
+    Vite::useHotFile(storage_path('framework/testing/no-hot-file'));
 
     $title = File::json(base_path('coachboard/src/lib/board/fixtures/v2-drill.json'))['board']['title'];
 
