@@ -40,6 +40,9 @@ test('the server HTML of /nl has the title and the drawing of the first step', f
     // Inside an <h1>: the title is also in the page props, which are in the HTML without SSR too.
     expect($html)->toMatch('/<h1[^>]*>\s*'.preg_quote($title, '/').'\s*<\/h1>/');
 
+    // Only SSR can lose the <title>: without SSR the Blade view sets one, with SSR only the page does.
+    expect($html)->toMatch('/<title[^>]*>\s*'.preg_quote($title, '/').'/');
+
     // viewBox comes before role in the tag, so match the whole tag.
     expect(preg_match('/<svg\b[^>]*\brole="img"[^>]*>/', $html, $svg))
         ->toBe(1, 'The HTML has no <svg> with role="img".');
