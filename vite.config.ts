@@ -32,6 +32,13 @@ export default defineConfig({
             formVariants: true,
         }),
     ]),
+    // Our tsconfig for every file: the nearest one in coachboard/ extends Astro's, which is not installed here.
+    tsconfig: 'tsconfig.json',
+    resolve: {
+        alias: {
+            '@coachboard': '/coachboard/src',
+        },
+    },
     server: {
         watch: {
             ignored: [
