@@ -54,7 +54,13 @@ The budget is one Pro plan with no extra usage. When a limit is hit, stop and co
 
 ## Commands
 
-Fill in during step 3 with the commands that exist in this repo: dev server, checks, tests, build with SSR.
+- **First setup:** `composer setup` installs the packages, creates `.env`, migrates and builds.
+- **Dev server:** `composer dev` runs the PHP server, the queue, the logs and Vite. In dev, Vite renders the pages on the server; no SSR server is needed.
+- **All checks, as CI runs them:** `composer ci:check`. It runs format and lint (`npm run check`), the Svelte types (`npm run types:check`), Pint, PHPStan and the tests.
+- **Fix format and lint:** `npm run check:fix` for the front end, `composer lint` for PHP. `.svelte` files are linted but not formatted: keep their style by hand.
+- **Tests only:** `php artisan test`, or one file: `php artisan test tests/Feature/HomeTest.php`.
+- **Build with SSR:** `npm run build:ssr`, then `php artisan inertia:start-ssr`. Check the server with `php artisan inertia:check-ssr` and stop it with `php artisan inertia:stop-ssr`. Start it again after every build: a running server keeps the old bundle.
+- **The SSR test** (`tests/Feature/SsrTest.php`) is skipped locally when the SSR server is not running, and required in CI. Before a pull request, build with SSR, start the server and run `composer ci:check`.
 
 ## Not yet
 
