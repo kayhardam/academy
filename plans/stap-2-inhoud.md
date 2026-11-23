@@ -1,6 +1,6 @@
 # Stap 2: Inhoud plannen
 
-Voorstel van 23 november 2026. Kay beslist uiterlijk zondag 20 december. Alle titels en andere Nederlandse tekst hieronder zijn voorstellen tot Kay ja zegt.
+Besloten op 23 november 2026: Kay heeft de series, de titels en de voorstellen in dit plan goedgekeurd. De titels gaan letterlijk over; een wijziging gaat eerst langs Kay.
 
 ## Doel
 
@@ -77,17 +77,33 @@ Oefeningen met dezelfde opstelling staan bij elkaar: de hoek in week 6 en 7, de 
 
 - **Januari is vol.** Stap 4 bouwen en drie oefeningen schrijven valt samen. Inhoud gaat voor (`plan.md`). Week 4 is een lichte oefening en de reserve: loopt week 1, 2 of 3 uit, dan gaat die oefening voor en schuift de kalender een week op.
 - **Twee weken met twee.** Lukt dat niet, dan schuift de rest op en vallen de laatste twee weg. Op 4 juli staan er dan 38, de ondergrens van stap 6, en blijven Vrijlopen en Warming-up op vier.
-- **Leeftijden.** Joris en de draak en Spelvorm: aanspeelbaar zijn staan in het Coachboard op 9 t/m 14 jaar, dus niet op 15-16. Zie hieronder.
+- **Leeftijden.** Joris en de draak en Spelvorm: aanspeelbaar zijn staan in het Coachboard nog op 9 t/m 14 jaar. Warming-up en Vrijlopen gaan pas live als 9 t/m 16 jaar daar op `main` staat (startprompt hieronder).
 
-## Jij beslist
+## Besloten
 
-- De acht series, hun volgorde op de startpagina, de volgorde in elke serie en de 28 titels.
-- De slugs van de series. Voorstel: Engels, zoals de items, zodat een URL één taal heeft: `crossing`, `fast-break`, `6-0-defense`, `warm-up`, `shooting`, `goalkeeping`, `5-1-defense` en `off-the-ball`.
-- De twee items op 9 t/m 14 jaar. Voorstel: hun leeftijden in het Coachboard verbreden tot 16 jaar, in een eigen pull request daar; hun moeilijkere varianten passen bij 15-16. Anders worden Warming-up en Vrijlopen series voor 13-14 jaar, of komen er twee nieuwe oefeningen voor in de plaats (30 nieuwe, en een andere kalender).
-- Een serie live met drie oefeningen, of pas met vijf.
+- De acht series, hun volgorde op de startpagina, de volgorde in elke serie en de 28 titels, zoals hierboven.
+- De slugs van de series zijn Engels, zoals die van de items, zodat een URL één taal heeft: `crossing`, `fast-break`, `6-0-defense`, `warm-up`, `shooting`, `goalkeeping`, `5-1-defense` en `off-the-ball`.
+- Joris en de draak en Spelvorm: aanspeelbaar zijn gaan in het Coachboard naar 9 t/m 16 jaar, in een eigen pull request daar: hun moeilijkere varianten passen bij 15-16.
+- Een serie gaat live met drie oefeningen.
 
 ## Klaar als
 
-- [ ] Kay heeft de series, de indeling en de titels goedgekeurd of aangepast.
-- [ ] Elke week van de kalender heeft een titel.
-- [ ] Dit plan en het whiteboard tonen de goedgekeurde versie, en Kay heeft gemerged.
+- [x] Kay heeft de series, de indeling en de titels goedgekeurd (23 november).
+- [x] Elke week van de kalender heeft een titel.
+- [x] Dit plan, `plan.md` en het whiteboard tonen de goedgekeurde versie.
+- [ ] Kay heeft gemerged.
+
+## Startprompt: leeftijden in het Coachboard
+
+Voor een sessie in de coachboard-repo, niet in deze. Uiterlijk in week 4 (vanaf 25 januari): daarna gaat Warming-up live.
+
+```text
+Lees AGENTS.md en src/content/AGENTS.md. Werk op een nieuwe branch vanaf origin/main.
+
+Kay heeft goedgekeurd dat twee Nederlandse items ook voor 15-16 jaar zijn (plans/stap-2-inhoud.md in
+kayhardam/academy). Zet in src/content/library/nl/catch-the-dragons-tail.md en
+src/content/library/nl/getting-open.md de leeftijden op [u10, u12, u14, u16]. Ze hebben geen vertaling.
+
+Verander verder niets: geen tekst, geen tekening. Draai npm run verify (exitcode 0) vóór de commit en open
+de pull request zoals AGENTS.md vraagt voor inhoud: wat, waarom en hoe te testen, in hoogstens drie regels.
+```
