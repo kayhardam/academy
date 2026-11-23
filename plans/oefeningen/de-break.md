@@ -169,7 +169,7 @@ related:
 
 **Verloop**
 
-1. K redt het schot. A1 en A2 sprinten meteen weg, elk langs een zijlijn.
+1. V1 schiet en K redt. A1 en A2 sprinten meteen weg, elk langs een zijlijn.
 2. K speelt de bal diep naar A1, voor hem uit.
 3. A3 en A4 lopen breed mee naar voren. De verdedigers moeten terug.
 
