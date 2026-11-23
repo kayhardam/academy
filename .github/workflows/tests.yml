@@ -13,16 +13,37 @@ jobs:
   ci:
     runs-on: ubuntu-latest
 
+    services:
+      # PostgreSQL 18, the engine production uses. The user and the database match
+      # .env.example: root without a password, database academy. Do not add DB_
+      # variables to this job: PHPUnit does not override a variable that is already
+      # set, so the tests would run on academy instead of academy_testing.
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_USER: root
+          POSTGRES_DB: academy
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U root -d academy"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          submodules: true
 
       - name: Setup PHP
         uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # v2
         with:
           php-version: '8.3'
+          extensions: pdo_pgsql
           tools: composer:v2
           coverage: none
 
@@ -31,8 +52,36 @@ jobs:
         with:
           node-version: '22'
 
+      # composer setup migrates academy; the tests use academy_testing (phpunit.xml).
+      - name: Create the test database
+        env:
+          POSTGRES_CONTAINER: ${{ job.services.postgres.id }}
+        run: docker exec "$POSTGRES_CONTAINER" createdb -U root academy_testing
+
       - name: Setup Application
         run: composer setup
 
+      - name: Build with SSR
+        run: npm run build:ssr
+
+      # The SSR test is required in CI and fails when this server is not running.
+      - name: Start the SSR server
+        run: |
+          nohup php artisan inertia:start-ssr > storage/logs/ssr.log 2>&1 &
+          for attempt in $(seq 1 30); do
+            if php artisan inertia:check-ssr > /dev/null 2>&1; then
+              php artisan inertia:check-ssr
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "The SSR server did not start within 30 seconds."
+          cat storage/logs/ssr.log
+          exit 1
+
       - name: Run CI Checks
         run: composer ci:check
+
+      - name: Show the SSR server log
+        if: failure()
+        run: cat storage/logs/ssr.log || true
