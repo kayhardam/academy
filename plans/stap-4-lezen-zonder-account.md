@@ -65,6 +65,51 @@ Bestaand en ongewijzigd: "Afspelen", "Open in het bord", "Vorige", "Volgende", "
 - Drie dev-dependencies:
   - `yaml` (npm): de front matter lezen in het exportscript. Zonder: een eigen parser, en die is breekbaar.
   - `@playwright/test` en `@axe-core/playwright` (npm): browsertests en toegankelijkheid, zoals in het Coachboard. De starterkit brengt zelf geen browsertests mee. Claude Code weegt eerst de browsertests van Pest af en legt het verschil voor.
+- De drie voorstellen in de aanvulling hieronder.
+
+## Aanvulling van 23 november 2026
+
+Drie voorstellen, uit het plan van stap 2 en dat van stap 5. Elk geldt pas na Kays ja; het besluit staat eronder. De startprompts van deel C en D verwijzen hiernaar.
+
+### 1. Publieke pagina's zonder sessie en zonder cookie
+
+`/nl` loopt nu door de groep `web`. Elke bezoeker krijgt daardoor twee cookies: de sessie en `XSRF-TOKEN`. Met `SESSION_DRIVER=database`, de standaard in `config/session.php` en `.env.example`, komt er per bezoeker ook een rij in `sessions`, met IP-adres en browser. De documentatie van Laravel Cloud noemt die instelling als iets wat je zelf zet. Kijk bij de variabelen van de omgeving wat er live geldt.
+
+Voorstel: de publieke routes krijgen een eigen groep, zonder sessie, cookies en CSRF. Lezen laat dan niets achter in de database. De rand van Laravel Cloud kan een antwoord met `Set-Cookie` ook niet bewaren; zonder cookie kan dat later wel. Het gevolg voor stap 5: een publieke pagina weet niet wie er is ingelogd, en linkt daarom gewoon naar de pagina's achter het inloggen.
+
+Bij ja, in deel C, sessie 1: tests dat de startpagina, een serie en een oefening geen `Set-Cookie` sturen en geen rij in `sessions` schrijven, ook met de sessie in de database. `HandleInertiaRequests` deelt nu `auth.user`, en dat vraagt een sessie: zoek in de documentatie van Inertia 3 uit wat een pagina zonder sessie nodig heeft. Lukt het niet, stop en meld het.
+
+**Besluit:** open.
+
+### 2. Een korte privacypagina
+
+Vanaf 31 januari sturen we trainers naar de site. De host verwerkt dan hun IP-adres. De privacypagina van het Coachboard gaat over Cloudflare, niet over Laravel Cloud. Voorstel: `/nl/privacy` met de tekst hieronder, gelinkt in de voet van elke pagina. Stap 5 breidt haar uit. Het is een vierde paginatype: een route, een test en een toegankelijkheidscontrole erbij.
+
+Voorstel voor de tekst, met de zinnen van het Coachboard waar die passen:
+
+> Lezen kan zonder account. Deze site zet daarbij geen cookies.
+>
+> **Wie deze site beheert.** Deze site wordt beheerd door Kay Hardam. Vragen over je privacy? Mail naar contact@handballcoachboard.com. Je adres en je bericht gebruiken we alleen om je te antwoorden.
+>
+> **Hosting.** De site draait bij Laravel Cloud, in Frankfurt. Om pagina's te leveren en de site tegen misbruik te beschermen, verwerken Laravel Cloud en Cloudflare technische gegevens, zoals je IP-adres en je browser. Dat doet elke webserver. Wij gebruiken die gegevens niet om je te herkennen. Logregels verdwijnen na één dag.
+>
+> **Het bord.** Afspelen en Open in het bord brengen je naar handballcoachboard.com. Daar geldt de privacypagina van het Coachboard.
+>
+> **Wijzigingen.** Verandert er iets, dan passen we deze pagina aan en de datum bovenaan.
+
+De eerste zin klopt alleen met voorstel 1. "Na één dag" geldt voor het plan Starter van Laravel Cloud. Dit is geen juridisch advies.
+
+Bij ja: de pagina komt in deel C, en in deel D in de SSR-test en de Lighthouse-meting.
+
+**Besluit:** open.
+
+### 3. Het filter op leeftijd later
+
+Alle acht series zijn voor 13 t/m 16 jaar (`plans/stap-2-inhoud.md`). "13-14 jaar" en "15-16 jaar" tonen dus dezelfde lijst: een filter dat niets doet. Voorstel: stap 4 bouwt het filter niet. Het komt terug zodra een serie andere leeftijden heeft. De kolommen `age_min` en `age_max` blijven, en elke serie toont haar leeftijd met `agesLabel()`.
+
+Bij ja vervalt: het filter in de tests en de pagina's van deel C, de teksten "Leeftijd" en "Alle leeftijden", de vorm van het filter in de URL en de regel over het filter in "Klaar als". De browsertest gaat van de startpagina direct naar een serie.
+
+**Besluit:** open.
 
 ## Klaar als
 
@@ -154,6 +199,9 @@ step-4c-pages.
 Doel: tests die nu nog falen. Kay schrijft daarna zelf de routes, de controllers en de eerste versie van de
 pagina's.
 
+Lees eerst "Aanvulling van 23 november 2026" in het plan: een voorstel met het besluit ja hoort bij dit
+deel, een voorstel dat nog open is niet.
+
 1. Schrijf tests voor de drie routes: de startpagina toont de series op positie; het filter op leeftijd
    toont alleen passende series; een serie toont haar oefeningen in volgorde; een oefening krijgt haar bord,
    haar link, en de vorige en volgende in de serie; een onbekende of gearchiveerde slug geeft 404.
@@ -171,6 +219,9 @@ Lees AGENTS.md en plans/stap-4-lezen-zonder-account.md. Werk alleen aan deel C, 
 step-4c-pages.
 
 Kay heeft de routes, de controllers en de eerste versie van de pagina's geschreven.
+
+Lees eerst "Aanvulling van 23 november 2026" in het plan: een voorstel met het besluit ja hoort bij dit
+deel, een voorstel dat nog open is niet.
 
 1. Review zijn code: leg uit wat beter kan en waarom. Pas alleen aan wat hij goedkeurt.
 2. Werk de pagina's af volgens het plan: telefoon eerst, de opbouw van de itempagina van het Coachboard
@@ -190,6 +241,9 @@ browsertests mee; leg eerst het verschil voor met de browsertests van Pest. Wach
 ```text
 Lees AGENTS.md en plans/stap-4-lezen-zonder-account.md. Werk alleen aan deel D, op de branch
 step-4d-release.
+
+Lees eerst "Aanvulling van 23 november 2026" in het plan: een voorstel met het besluit ja hoort bij dit
+deel, een voorstel dat nog open is niet.
 
 1. Paginatitels en beschrijvingen volgens de door Kay goedgekeurde vorm. De canonical van een oefening wijst
    naar https://handballcoachboard.com/nl/<canonical_path>; series en de startpagina zijn hun eigen canonical.
