@@ -32,6 +32,13 @@ export default defineConfig({
             formVariants: true,
         }),
     ]),
+    // Our tsconfig for every file: the nearest one in coachboard/ extends Astro's, which is not installed here.
+    tsconfig: 'tsconfig.json',
+    resolve: {
+        alias: {
+            '@coachboard': '/coachboard/src',
+        },
+    },
     server: {
         watch: {
             ignored: [
@@ -54,6 +61,7 @@ export default defineConfig({
             'resources/js/components/ui/*',
             'resources/js/routes/**',
             'resources/js/wayfinder/**',
+            'coachboard/**',
         ],
         options: {
             denyWarnings: true,
@@ -75,6 +83,7 @@ export default defineConfig({
             'AGENTS.md',
             'plan.md',
             'plans/**',
+            'coachboard/**',
         ],
         sortTailwindcss: {
             functions: ['clsx', 'cn', 'cva'],

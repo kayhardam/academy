@@ -1,0 +1,3 @@
+[submodule "coachboard"]
+	path = coachboard
+	url = https://github.com/kayhardam/coachboard.git
