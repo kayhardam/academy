@@ -158,7 +158,7 @@ return [
     */
 
     'features' => [
-        Features::registration(),
+        // Registration is off until step 5, when the privacy statement exists.
         Features::resetPasswords(),
         Features::emailVerification(),
     ],
