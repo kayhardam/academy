@@ -8,6 +8,8 @@
         "dev": "vp dev",
         "check": "vp check",
         "check:fix": "vp check --fix",
+        "export": "node scripts/export-library.mjs",
+        "test:export": "node --test \"scripts/**/*.test.mjs\"",
         "types:check": "svelte-check --tsconfig ./tsconfig.json --config ./svelte.config.js"
     },
     "dependencies": {

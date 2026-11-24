@@ -41,7 +41,7 @@ The budget is one Pro plan with no extra usage. When a limit is hit, stop and co
 ## Content and board code
 
 - One source: drills and tactics are the Markdown files in the `coachboard` submodule (`src/content/library/`). Never edit or copy anything in the submodule.
-- Series live in `content/series/` here: title, summary, ages and the items in order.
+- Series live in `content/series/nl/<slug>.md` here, front matter only: `title`, `summary` (at least 50 characters), `ages` (a run from the submodule's `AGES`, youngest first, without a gap) and `items` (slugs of Dutch items, in order, each once). The format and its checks are in `scripts/lib/series.mjs`.
 - The board comes from the submodule: `Court.svelte` and `src/lib/board`. The link format is a contract (`docs/link-format.md` there): build links with its `encode()`, never by hand, and compare boards, never link strings.
 - Dutch site text is agreed with Kay first. Reuse the submodule's own strings (`t()`, `agesLabel()`) where they exist, and follow "Copy" in its `AGENTS.md` for handball terms.
 
@@ -56,8 +56,9 @@ The budget is one Pro plan with no extra usage. When a limit is hit, stop and co
 
 - **First setup:** `composer setup` installs the packages, creates `.env`, migrates and builds.
 - **Dev server:** `composer dev` runs the PHP server, the queue, the logs and Vite. In dev, Vite renders the pages on the server; no SSR server is needed.
-- **All checks, as CI runs them:** `composer ci:check`. It runs format and lint (`npm run check`), the Svelte types (`npm run types:check`), Pint, PHPStan and the tests.
+- **All checks, as CI runs them:** `composer ci:check`. It runs format and lint (`npm run check`), the Svelte types (`npm run types:check`), the export and its tests, Pint, PHPStan and the tests.
 - **Fix format and lint:** `npm run check:fix` for the front end, `composer lint` for PHP. `.svelte` files are linted but not formatted: keep their style by hand.
+- **Export the library:** `npm run export` checks the submodule's items (all languages, with its own schema and checks) and the series, and writes `database/data/library.json` (not in git). On an error it prints one line per error and exits with 1. Its tests: `npm run test:export` (`node --test`).
 - **Tests only:** `php artisan test`, or one file: `php artisan test tests/Feature/HomeTest.php`.
 - **Build with SSR:** `npm run build:ssr`, then `php artisan inertia:start-ssr`. Check the server with `php artisan inertia:check-ssr` and stop it with `php artisan inertia:stop-ssr`. Start it again after every build: a running server keeps the old bundle.
 - **The SSR test** (`tests/Feature/SsrTest.php`) is skipped locally when the SSR server is not running, and required in CI. Before a pull request, build with SSR, start the server and run `composer ci:check`.
