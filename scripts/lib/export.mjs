@@ -12,7 +12,7 @@ export const LANG = 'nl';
 /**
  * Reads and checks every item in `libraryDir` (all languages) and every series
  * in `seriesDir`. Returns { errors } with one line per error, or { library }:
- * the Dutch items sorted by slug and the series sorted by file name.
+ * the Dutch items sorted by slug and the series sorted by position.
  */
 export async function exportLibrary({ libraryDir, seriesDir }, cb) {
     const itemFiles = await markdownFiles(libraryDir);

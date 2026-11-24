@@ -24,6 +24,7 @@ test('a valid series', () => {
                     'Een serie voor de tests van de export: eerst passen in tweetallen, dan passen en doorlopen.',
                 ages: ['u10', 'u12'],
                 items: ['pass-in-pairs', 'pass-and-go'],
+                position: 1,
             },
         ],
         errors: [],
@@ -70,7 +71,7 @@ test('every field is required', () => {
     const { errors } = check('---\nages: [u10]\n---\n');
     assert.deepEqual(
         errors.map((e) => e.split(': ')[1]),
-        ['title', 'summary', 'items'],
+        ['title', 'summary', 'items', 'position'],
     );
 });
 
@@ -133,6 +134,83 @@ test('invalid YAML is one line', () => {
     const { errors } = check('---\ntitle: "open\n---\n');
     assert.equal(errors.length, 1);
     assert.ok(!errors[0].includes('\n'));
+});
+
+test('position is a whole number', () => {
+    for (const position of ['1.5', '"1"', 'een']) {
+        const code = changed(SERIES, 'position: 1', `position: ${position}`);
+        const { errors } = check(code);
+        assert.equal(errors.length, 1, position);
+        assert.match(errors[0], /^"series\/nl\/passing": position: /);
+    }
+});
+
+test('two series with the same position are an error, and there are no series', () => {
+    const code = fixture(SERIES);
+    const { series, errors } = checkSeries(
+        [
+            { path: 'a.md', code },
+            {
+                path: 'b.md',
+                code: changed(SERIES, 'position: 1', 'position: 2'),
+            },
+            { path: 'c.md', code },
+        ],
+        SLUGS,
+        cb.current,
+    );
+    assert.deepEqual(series, []);
+    assert.deepEqual(errors, [
+        '"series/nl/c": position: 1 is also the position of "series/nl/a"',
+    ]);
+});
+
+test('a same position is found also when that other series has another error', () => {
+    const { errors } = checkSeries(
+        [
+            {
+                path: 'a.md',
+                code: changed(SERIES, 'ages: [u10, u12]', 'ages: [u10, u14]'),
+            },
+            { path: 'b.md', code: fixture(SERIES) },
+        ],
+        SLUGS,
+        cb.current,
+    );
+    assert.deepEqual(errors, [
+        '"series/nl/a": list the age groups in order, without a gap',
+        '"series/nl/b": position: 1 is also the position of "series/nl/a"',
+    ]);
+});
+
+test('the series come in the order of their position, not of their file names', () => {
+    const { series, errors } = checkSeries(
+        [
+            {
+                path: 'a.md',
+                code: changed(SERIES, 'position: 1', 'position: 10'),
+            },
+            {
+                path: 'b.md',
+                code: changed(SERIES, 'position: 1', 'position: -3'),
+            },
+            {
+                path: 'c.md',
+                code: changed(SERIES, 'position: 1', 'position: 2'),
+            },
+        ],
+        SLUGS,
+        cb.current,
+    );
+    assert.deepEqual(errors, []);
+    assert.deepEqual(
+        series.map(({ slug, position }) => [slug, position]),
+        [
+            ['b', -3],
+            ['c', 2],
+            ['a', 10],
+        ],
+    );
 });
 
 test('one invalid series means no series at all', () => {

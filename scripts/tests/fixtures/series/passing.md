@@ -5,4 +5,5 @@ ages: [u10, u12]
 items:
   - pass-in-pairs
   - pass-and-go
+position: 1
 ---

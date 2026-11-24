@@ -128,6 +128,24 @@ test('a series that names an invalid Dutch item gets no second error: the item h
     assert.match(errors[0], /^"nl\/pass-and-go": level: /);
 });
 
+test('two series with the same position stop the export', async () => {
+    const paths = await copy({
+        'series/other.md': changed(
+            'series/passing.md',
+            'title: "Passen"',
+            'title: "Nog eens passen"',
+        ),
+    });
+    const { errors, library } = await exportLibrary(
+        { libraryDir: paths.library, seriesDir: paths.series },
+        cb.current,
+    );
+    assert.equal(library, undefined);
+    assert.deepEqual(errors, [
+        '"series/nl/passing": position: 1 is also the position of "series/nl/other"',
+    ]);
+});
+
 test('a series that names an English-only item is an error', async () => {
     const paths = await copy({
         'library/en/only-english.md': changed(

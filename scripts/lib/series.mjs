@@ -7,11 +7,13 @@
 //   items:
 //     - crossing-in-pairs
 //     - crossing-cb-lb
+//   position: 1
 //   ---
 //
 // `ages` is a run of age groups from the Coachboard's AGES, youngest first and
 // without a gap, as an item lists them. `items` are slugs of Dutch items, in
-// the order the series shows them, each once.
+// the order the series shows them, each once. `position` is a whole number,
+// unique over all series: the site lists the series by it, lowest first.
 import { z } from 'zod';
 import { firstLine, parseFrontmatter } from './frontmatter.mjs';
 import { issues } from './library.mjs';
@@ -27,6 +29,7 @@ export function seriesSchema(ages) {
             summary: z.string().min(50),
             ages: z.array(z.enum(ages)).min(1),
             items: z.array(z.string().min(1)).min(1),
+            position: z.number().int(),
         })
         .strict();
 }
@@ -35,12 +38,14 @@ export function seriesSchema(ages) {
  * Every series, checked. `files` are { path, code }, the path relative to
  * content/series/nl/ ("kruisen.md"); `itemSlugs` are the slugs of the Dutch
  * items; `cb` gives the Coachboard's AGES and checkMeters(). Returns the
- * series in the order of `files` and one line per error.
+ * series sorted by position and one line per error.
  */
 export function checkSeries(files, itemSlugs, cb) {
     const schema = seriesSchema(cb.AGES);
     const errors = [];
     const series = [];
+    /** Each position taken so far, and by which series. */
+    const positions = new Map();
     for (const { path, code } of files) {
         const slug = path.replace(/\.md$/, '');
         const id = `series/nl/${slug}`;
@@ -67,15 +72,34 @@ export function checkSeries(files, itemSlugs, cb) {
             errors.push(...issues(id, parsed.error.issues));
             continue;
         }
-        const { title, summary, ages, items } = parsed.data;
+        const { title, summary, ages, items, position } = parsed.data;
         errors.push(...agesInOrder(id, ages, cb.AGES));
         errors.push(...knownItems(id, items, itemSlugs));
         errors.push(...cb.checkMeters([{ id, data: parsed.data }]));
+        const taken = positions.get(position);
+        if (taken) {
+            errors.push(
+                `"${id}": position: ${position} is also the position of "${taken}"`,
+            );
+        } else {
+            positions.set(position, id);
+        }
         if (errors.length === before) {
-            series.push({ lang: 'nl', slug, title, summary, ages, items });
+            series.push({
+                lang: 'nl',
+                slug,
+                title,
+                summary,
+                ages,
+                items,
+                position,
+            });
         }
     }
-    return { series: errors.length > 0 ? [] : series, errors };
+    if (errors.length > 0) {
+        return { series: [], errors };
+    }
+    return { series: series.sort((a, b) => a.position - b.position), errors };
 }
 
 /** A run of age groups, youngest first, without a gap: the rule checkLibrary() has for an item. */
