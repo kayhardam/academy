@@ -41,7 +41,7 @@ The budget is one Pro plan with no extra usage. When a limit is hit, stop and co
 ## Content and board code
 
 - One source: drills and tactics are the Markdown files in the `coachboard` submodule (`src/content/library/`). Never edit or copy anything in the submodule.
-- Series live in `content/series/nl/<slug>.md` here, front matter only: `title`, `summary` (at least 50 characters), `ages` (a run from the submodule's `AGES`, youngest first, without a gap), `items` (slugs of Dutch items, in order, each once) and `position` (a whole number, unique over all series: the order on the site, lowest first). Text below the front matter is an error. The format and its checks are in `scripts/lib/series.mjs`.
+- Series live in `content/series/nl/<slug>.md` here, front matter only: `title`, `summary` (at least 50 characters), `ages` (a run from the submodule's `AGES`, youngest first, without a gap), `items` (slugs of Dutch items, in order, each once) and `position` (a whole number from 1, unique over all series: the order on the site, lowest first; gaps are allowed). Text below the front matter is an error. The format and its checks are in `scripts/lib/series.mjs`.
 - The board comes from the submodule: `Court.svelte` and `src/lib/board`. The link format is a contract (`docs/link-format.md` there): build links with its `encode()`, never by hand, and compare boards, never link strings.
 - Dutch site text is agreed with Kay first. Reuse the submodule's own strings (`t()`, `agesLabel()`) where they exist, and follow "Copy" in its `AGENTS.md` for handball terms.
 

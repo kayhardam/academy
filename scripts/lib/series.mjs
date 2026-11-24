@@ -12,8 +12,9 @@
 //
 // `ages` is a run of age groups from the Coachboard's AGES, youngest first and
 // without a gap, as an item lists them. `items` are slugs of Dutch items, in
-// the order the series shows them, each once. `position` is a whole number,
-// unique over all series: the site lists the series by it, lowest first.
+// the order the series shows them, each once. `position` is a whole number
+// from 1, unique over all series: the site lists the series by it, lowest
+// first. Gaps are allowed, so a series can go live later than the next one.
 import { z } from 'zod';
 import { firstLine, parseFrontmatter } from './frontmatter.mjs';
 import { issues } from './library.mjs';
@@ -29,7 +30,7 @@ export function seriesSchema(ages) {
             summary: z.string().min(50),
             ages: z.array(z.enum(ages)).min(1),
             items: z.array(z.string().min(1)).min(1),
-            position: z.number().int(),
+            position: z.number().int().min(1),
         })
         .strict();
 }

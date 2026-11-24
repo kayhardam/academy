@@ -136,8 +136,8 @@ test('invalid YAML is one line', () => {
     assert.ok(!errors[0].includes('\n'));
 });
 
-test('position is a whole number', () => {
-    for (const position of ['1.5', '"1"', 'een']) {
+test('position is a whole number from 1', () => {
+    for (const position of ['1.5', '"1"', 'een', '0', '-1']) {
         const code = changed(SERIES, 'position: 1', `position: ${position}`);
         const { errors } = check(code);
         assert.equal(errors.length, 1, position);
@@ -183,7 +183,7 @@ test('a same position is found also when that other series has another error', (
     ]);
 });
 
-test('the series come in the order of their position, not of their file names', () => {
+test('the series come in the order of their position, not of their file names; gaps are allowed', () => {
     const { series, errors } = checkSeries(
         [
             {
@@ -192,7 +192,7 @@ test('the series come in the order of their position, not of their file names', 
             },
             {
                 path: 'b.md',
-                code: changed(SERIES, 'position: 1', 'position: -3'),
+                code: fixture(SERIES),
             },
             {
                 path: 'c.md',
@@ -206,7 +206,7 @@ test('the series come in the order of their position, not of their file names', 
     assert.deepEqual(
         series.map(({ slug, position }) => [slug, position]),
         [
-            ['b', -3],
+            ['b', 1],
             ['c', 2],
             ['a', 10],
         ],
