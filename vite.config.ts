@@ -67,6 +67,13 @@ export default defineConfig({
             denyWarnings: true,
             typeAware: true,
         },
+        overrides: [
+            {
+                // node:test runs every test() itself; its promise needs no await.
+                files: ['scripts/tests/**/*.test.mjs'],
+                rules: { 'typescript/no-floating-promises': 'off' },
+            },
+        ],
     },
     fmt: {
         printWidth: 80,
@@ -84,6 +91,7 @@ export default defineConfig({
             'plan.md',
             'plans/**',
             'coachboard/**',
+            'scripts/tests/fixtures/**',
         ],
         sortTailwindcss: {
             functions: ['clsx', 'cn', 'cva'],
