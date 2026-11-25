@@ -91,7 +91,7 @@ Oefeningen met dezelfde opstelling staan bij elkaar: de hoek in week 6 en 7, de 
 - [x] Kay heeft de series, de indeling en de titels goedgekeurd (23 november).
 - [x] Elke week van de kalender heeft een titel.
 - [x] Dit plan, `plan.md` en het whiteboard tonen de goedgekeurde versie.
-- [ ] Kay heeft gemerged.
+- [x] Kay heeft gemerged (PR #3, 23 november).
 
 ## Startprompt: leeftijden in het Coachboard
 
