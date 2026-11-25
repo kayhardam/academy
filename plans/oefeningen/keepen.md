@@ -15,6 +15,7 @@ items:
   - goalkeeper-shots-from-the-line # week 24
   - goalkeeper-and-block # week 17
   - goalkeeper-starting-the-fast-break # week 8
+position: 6
 ```
 
 ## Keeper: schoten uit de hoek

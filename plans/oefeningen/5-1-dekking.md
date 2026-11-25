@@ -15,6 +15,7 @@ items:
   - 5-1-defense-basics
   - 5-1-defense-steal-and-fast-break # week 16
   - game-5-1-defense # week 22
+position: 7
 ```
 
 ## Verdedigen 1 tegen 1

@@ -15,6 +15,7 @@ items:
   - fast-break-3-on-2 # week 15
   - fast-break-second-wave
   - game-fast-transition # week 21
+position: 2
 ```
 
 ## Break 2 tegen 1

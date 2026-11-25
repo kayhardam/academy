@@ -15,6 +15,7 @@ items:
   - wrong-foot-shot
   - shot-after-a-feint # week 23
   - shooting-past-a-block # week 17
+position: 5
 ```
 
 ## Het sprongschot

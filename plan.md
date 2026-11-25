@@ -1,6 +1,6 @@
 # Plan: leerplatform naast het Coachboard
 
-Stand: 23 november 2026. Dit is het overzicht op één pagina. Het plan per stap staat in `plans/`. Het whiteboard toont hetzelfde in één beeld: https://claude.ai/artifact/8WZkXj5rMeXdT4iVdTC2cV
+Stand: 25 november 2026. Dit is het overzicht op één pagina. Het plan per stap staat in `plans/`. Het whiteboard toont hetzelfde in één beeld: https://claude.ai/artifact/8WZkXj5rMeXdT4iVdTC2cV
 
 ## Doel
 
@@ -27,7 +27,7 @@ Op zondag 28 maart 2027 kan een jeugdtrainer zonder account een serie voor zijn 
 
 ## Open keuzes
 
-Geen. De keuzes van stap 1 en stap 2 zijn op 23 november 2026 beslist.
+Geen voor het geheel: de keuzes van stap 1 en stap 2 zijn op 23 november 2026 beslist. Open per stap: de drie voorstellen in de aanvulling van stap 4 en "Jij beslist" in stap 5.
 
 ## Stappen
 
@@ -40,7 +40,7 @@ Geen. De keuzes van stap 1 en stap 2 zijn op 23 november 2026 beslist.
 | 5 | Account en Mijn trainingen | live zo 28 mrt | een training maken, afvinken en het account verwijderen werkt |
 | 6 | Vullen en beslissen | t/m zo 4 juli | 38 tot 64 oefeningen live en een besluit over Later |
 
-Stap 1, 2 en 3 zijn af. Vanaf maandag 4 januari komen er elke week 1 à 2 oefeningen bij, 26 weken lang, volgens de schrijfkalender van stap 2.
+Stap 1, 2 en 3 zijn af. Van stap 4 is deel A, de export, gemerged (PR #6); deel B, het datamodel en de import, loopt. Vanaf maandag 4 januari komen er elke week 1 à 2 oefeningen bij, 26 weken lang, volgens de schrijfkalender van stap 2. Week 1 t/m 4 zijn getekend.
 
 ## Kwaliteitslat (elke stap)
 

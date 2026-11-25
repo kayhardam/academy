@@ -15,6 +15,7 @@ items:
   - crossing-cb-lb
   - crossing-cb-lb-with-screen # week 13
   - game-crossing # week 20
+position: 1
 ```
 
 ## Kruisen tegen een verdediger

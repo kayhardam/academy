@@ -15,6 +15,7 @@ items:
   - 6-0-defense-basics
   - 6-0-defense-against-a-crossing # week 14
   - game-6-0-defense # week 22
+position: 3
 ```
 
 ## Schuiven met drie verdedigers
