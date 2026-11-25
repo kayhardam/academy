@@ -15,6 +15,7 @@ items:
   - keep-away-4-on-2 # week 18
   - passing-to-the-pivot # week 25
   - getting-open
+position: 8
 ```
 
 Spelvorm: aanspeelbaar zijn staat nu op 9 t/m 14 jaar. De serie kan pas live als dat 9 t/m 16 jaar is (startprompt in `plans/stap-2-inhoud.md`).

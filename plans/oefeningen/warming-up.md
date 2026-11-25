@@ -15,6 +15,7 @@ items:
   - reaction-sprint # week 19
   - sprints-with-turns
   - goalkeeper-warm-up # week 26
+position: 4
 ```
 
 Joris en de draak staat nu op 9 t/m 14 jaar. De serie kan pas live als dat 9 t/m 16 jaar is (startprompt in `plans/stap-2-inhoud.md`).

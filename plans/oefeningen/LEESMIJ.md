@@ -10,7 +10,7 @@ Per serie één bestand, met de tekst van elke nieuwe oefening uit `plans/stap-2
 - **Op het bord:** de opstelling om te tekenen.
 - Waar nodig: de tekst onder de stappen, en welk bestaand item de oefening bij Zie ook krijgt.
 
-Bovenaan elk bestand staat een voorstel voor het serie-bestand van stap 4: titel, samenvatting, leeftijden en de vijf items in volgorde.
+Bovenaan elk bestand staat een voorstel voor het serie-bestand van stap 4: titel, samenvatting, leeftijden, de vijf items in volgorde en `position`, de plek op de startpagina. De plekken volgen de volgorde van stap 2, van Kruisen (1) tot Vrijlopen (8). Het formaat staat in `scripts/lib/series.mjs`.
 
 ## Gecontroleerd
 
@@ -23,6 +23,8 @@ Met een script, tegen het schema van het Coachboard (`src/content.config.ts` op 
 - een getal en "meter" staan met een vaste spatie;
 - Zie ook noemt alleen items die er in die week al zijn;
 - de leeftijden zijn een reeks zonder gat, met 13-14 en 15-16 jaar erin.
+
+Het serie-blok bovenaan elk bestand is op 25 november 2026 gecontroleerd met `checkSeries()` uit `scripts/lib/series.mjs`. Of een nieuw item bestaat, controleert de export pas als het in de submodule staat.
 
 Niet gecontroleerd: de tekening. Dat doen `npm run import-link` en `npm run verify` in het Coachboard.
 
